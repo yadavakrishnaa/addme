@@ -13,10 +13,10 @@ The repo is already pushed to GitHub. Complete deployment from the Vercel dashbo
    - **Install Command:** `npm install`
 
 4. **Set the API key:** In **Environment Variables** add:
-   - **Name:** `API_KEY`  
+   - **Name:** `VITE_API_KEY`  
    - **Value:** your Gemini API key  
-   Apply to **Production**, **Preview**, and **Development**.
+   Apply to **Production**, **Preview**, and **Development**. Then **redeploy** so the build picks it up.
 
 5. Click **Deploy**. Your app will be at a URL like `https://addme-xxx.vercel.app`.
 
-**Note:** Do not commit `.env` or `.env.local`; the key is set only in Vercel (and locally in `.env.local` for dev).
+**Note:** Do not commit `.env` or `.env.local`. For local dev, add `VITE_API_KEY=your-key` to `.env.local`.

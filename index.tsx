@@ -1,10 +1,13 @@
-
+import './index.css';
 import React, { useState, useRef, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { GoogleGenAI } from "@google/genai";
 
-// Initialize Gemini API
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = import.meta.env.VITE_API_KEY;
+if (!apiKey && import.meta.env.PROD) {
+  console.error('VITE_API_KEY is not set. Add it in Vercel: Project → Settings → Environment Variables.');
+}
+const ai = new GoogleGenAI({ apiKey: apiKey || '' });
 
 const App = () => {
   const [step, setStep] = useState<'splash' | 'home' | 'tutorial' | 'captureA' | 'captureB' | 'processing' | 'result' | 'gallery'>('splash');

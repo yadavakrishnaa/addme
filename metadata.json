@@ -1,0 +1,7 @@
+{
+  "name": "AddMe Photo",
+  "description": "An offline photo merge app that uses OpenCV and AI segmentation to seamlessly add people into photos, similar to the Add Me feature in Google Photos.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

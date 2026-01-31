@@ -1,0 +1,43 @@
+
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace "com.addme.photo"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.addme.photo"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+    
+    // OpenCV needs some extra packaging options often
+    packagingOptions {
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/x86_64/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/x86/libc++_shared.so'
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    
+    // ML Kit Selfie Segmentation
+    implementation 'com.google.mlkit:segmentation-selfie:16.0.0-beta4'
+    
+    // OpenCV - using a common Maven redistribution
+    implementation 'org.opencv:opencv:4.9.0'
+}
